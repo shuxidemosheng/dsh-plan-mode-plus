@@ -1,0 +1,16 @@
+- insert:
+    - id: plan-mode-plus
+      name: dsh-plan-mode-plus
+      config:
+        # 计划模式期间对写类工具做硬拦截（对齐 ZCode 的只读强制）。
+        # false 时回到官方 plan-mode 的纯引导行为。
+        enforce: true
+        # 硬拦截的模型侧工具名（默认对齐 ZCode 的 Write/Edit/ApplyPatch/Bash 分类）。
+        # 需要更严/更松的部署直接覆盖本列表；例如把 subagent 也禁掉以堵住
+        # "子代理代写"的口子，或删掉 str_replace_editor（未挂载该工具的 preset 无影响）。
+        denyTools:
+          - bash
+          - pwsh
+          - write
+          - edit
+          - str_replace_editor
